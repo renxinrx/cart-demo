@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-cart例子</title>
+	<link rel="stylesheet" href="vue.css">
+</head>
+<body>
+	<div class='container'>
+		<div class="cart-title">
+			<span>购物车</span>
+		</div>
+		<div class="cart-warp">
+		<!-- 列表头部 -->
+			<ul class="cart-banner">
+				<li>商品信息</li>
+				<li>商品金额</li>
+				<li>商品数量</li>
+				<li>总金额</li>
+				<li>编辑</li>
+			</ul>
+			<!-- 列表 -->
+			<ul class="cart-list">
+				<li>
+					<div class="part-1">
+						<!-- 单选图表 -->
+						<div class="li-left">
+							<span class='circle-pic'>&nbsp;</span>
+							<img src="img/goods-1.jpg" alt="">
+						</div>
+						<div class="li-right">
+							<p>黄鹤楼香烟</p>
+							<dl>
+								<dt>赠送：</dt>
+								<dd>打火机</dd>
+							</dl>
+						</div>
+					</div>
+				
+					<div class='part-2'>19</div>
+					<div class='part-3'>
+						<span>-</span>
+						<input type="text" class='num' disabled="disabled">
+						<span>+</span>
+						<div class='stock'>有货</div>
+					</div>
+					<div class='part-4'>￥19.00</div>
+					<div class='part-5'>删除</div>
+				</li>
+				<li>
+					<div class="part-1">
+						<!-- 单选图表 -->
+						<div class="li-left">
+							<span class='circle-pic'>&nbsp;</span>
+							<img src="img/goods-2.jpg" alt="">
+						</div>
+						<div class="li-right">
+							<p>加多宝</p>
+							<dl>
+								<dt>赠送：</dt>
+								<dd>吸管</dd>
+							</dl>
+						</div>
+					</div>
+				
+					<div class='part-2'>8</div>
+					<div class='part-3'>
+						<span>-</span>
+						<input type="text" class='num' disabled="disabled">
+						<span>+</span>
+						<div class='stock'>有货</div>
+					</div>
+					<div class='part-4'>￥19.00</div>
+					<div class='part-5'>删除</div>
+				</li>
+			</ul>
+		</div>
+		<div class="cart-footer">
+			<div class='footer-left'>
+				<label>
+					<span class="circle-pic">&nbsp;</span>
+					<span>全选</span>
+				</label>
+				<span>取消全选</span>
+			</div>
+			<div class='footer-right'>
+				<span>总金额：</span>
+				<span class="color-red">￥200元</span>
+				<a href='address.html' class='btn'>结账</a>
+			</div>
+		</div>
+	</div>
+
+	<script src='vue2.js'></script>
+</body>
+</html>

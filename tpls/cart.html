@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cart购物车实例</title>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/cart.css">
+</head>
+<body>
+	
+	<div id="app">
+		<div class="container">
+			<div class="cart-title">
+				<span>购物车</span>
+			</div>
+			<!-- 列表 -->
+			<div class="cart">
+				
+					<ul class="cart-item-header">
+						<li>商品信息</li>
+						<li>商品金额</li>
+						<li>商品数量</li>
+						<li>总金额</li>
+						<li>编辑</li>
+					</ul>
+				
+					<ul class="cart-item-list">
+						<li v-for='item in productList'>
+							<div class="cart-item-1">
+								<span v-bind:class='{"check":item.isCheck}'><span class="glyphicon glyphicon-unchecked" @click='checkFlag(item)'></span></span>
+								<img src="../img/goods-1.jpg" v-bind:src='item.productImage'>
+								<div class='cart-item-info'>
+									<p>{{item.productName}}</p>
+									<dl>
+										<dt>赠送:</dt>
+										<dd v-for='product in item.parts'>{{product.partsName}}</dd>
+									</dl>
+								</div>
+							</div>
+							<div class="cart-item-2">{{item.productPrice | formatMoney}}</div>
+							<div class="cart-item-3">
+								<span class="glyphicon glyphicon-minus" @click='change(item,-1)'></span>
+								<input type="text" class='input-mini' v-model='item.productQuentity' disabled="disabled">
+								<span class="glyphicon glyphicon-plus" v-on:click='change(item,1)'></span>
+								<div class="item-stock">有货</div>
+							</div>
+							<div class="cart-item-4">{{item.productPrice*item.productQuentity | money('元')}}</div>
+							<div class="cart-item-5">
+								<span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#myModal" @click='delteItem(item)'></span>
+							</div>
+						</li>
+
+					</ul>
+			</div>
+
+			<div class='cart-footer'>
+				<div class="cart-l">
+					<a href="javascript:;" class="checkAll"  v-bind:class='{"check":checkAllFlag}' @click='allCheck(true)' >
+						<span class='glyphicon glyphicon-unchecked' ></span>
+						全选
+					</a>
+					<a href="javascript:;"  class='cancal' @click='allCheck(false)'>取消全选</a>
+				</div>
+				<div class="cart-r">
+					总计金额：<span>{{totalMoney | formatMoney}}</span>
+					<a href="address.html" class="btn  btn-danger" role="button">结账</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 删除时的modal -->
+<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- <h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
+      </div>
+      <div class="modal-body">
+        	你确认删除此订单信息吗？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" @click='deleteDate'>确定</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<script src="../js/lib/jquery.min.js"></script>
+	<script src="../js/lib/bootstrap.js"></script>
+	<script src='../js/lib/vue2.js'></script>
+	<script src='../js/lib/vue-resource.min.js'></script>
+	<script src='../js/cart.js'></script>
+</body>
+</html>

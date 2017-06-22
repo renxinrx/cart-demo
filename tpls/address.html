@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>address的地址页面</title>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/cart.css">
+</head>
+<body>
+	<div id="address">
+		<div class="address-container">
+			<!-- 地址导航 -->
+			<ul class='add-navigation'>
+				<li class="current">地址确认</li>
+				<li>查看订单</li>
+				<li>支付</li>
+				<li>订单确认</li>
+			</ul>
+			<!-- 配送地址 -->
+			<div class="delivery">
+				<span>配送地址</span>
+			</div>
+
+			<!-- 地址 -->
+			<div class="address-list-wrap">
+				<ul class='address-list-ul text-left'>
+					<li class="address-list" v-for='(item,index) in filterList' :class='{"way-current":index==currentIndex}' @click='currentIndex=index'>
+						<dl class='li-info'>
+							<dt>{{item.userName}}</dt>
+							<dd>{{item.streetName}}</dd>
+							<dd>{{item.tel}}</dd>
+						</dl>
+						<div class=''>
+							{{item.postCode}}
+							<div @click='setDefault(item.addressId)' v-if='item.isDefault==false'>
+								<a href="javascript:;" >设为默认</a>
+							</div>
+							<div v-if='item.isDefault==true'>
+								<a href="javascript:;" >默认地址</a>
+							</div>
+						</div>
+					</li>
+					<li class="address-list">
+						<div class='add-info'>
+							<span class="glyphicon glyphicon-plus"></span>
+							<div>添加新地址</div>
+						</div>
+					</li>
+				</ul>
+				
+				<!-- 更多地址 -->
+				<div class='address-more'>
+					<span @click='limitNum=addressList.length' v-if='limitNum==num'>more <span class='glyphicon glyphicon-chevron-down'></span></span>
+					<span @click='limitNum=num' v-if='limitNum==addressList.length'>more <span class='glyphicon glyphicon-chevron-up'></span></span>
+				</div>
+			</div>
+			<!-- 配送方式 -->
+				<div class='delivery-way'>
+					<span>配送方式</span>
+				</div>
+				<ul class="delivery-way-wrap">
+					<li :class='{"way-current":delivery==0}' @click='delivery=0'>
+						<div class='name'>标准配送</div>
+						<div class="price">free</div>
+					</li>
+					<li :class='{"way-current":delivery==1}' @click='delivery=1'>
+						<div class='name'>高级配送</div>
+						<div class="price">180</div>
+					</li>
+				</ul>
+
+				<!-- 下一步 -->
+				<div class="next">
+					<button class="btn btn-default">下一步</button>
+				</div>
+
+		</div>
+	</div>
+
+	<script src='../js/lib/vue2.js'></script>
+	<script src='../js/lib/vue-resource.min.js'></script>
+	<script src='../js/address.js'></script>
+</body>
+</html>
